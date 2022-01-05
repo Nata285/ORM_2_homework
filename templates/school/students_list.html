@@ -9,9 +9,7 @@
     <li>{{ student.name }} {{ student.group }} <br> Преподаватель: {{ student.teacher.name }} {{ student.teacher.subject }}</li>
   {% endfor %}
 
-  {% for teacher in student.teachers.all %}
-    <p>{{ teacher.name }}: {{ teacher.subject }}</p>
-  {% endfor %}
+
   </ul>
 </div>
 {% endblock %}

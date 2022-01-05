@@ -15,11 +15,10 @@ class Teacher(models.Model):
     def __str__(self):
         return self.name
 
-
 class Student(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
-    teacher = models.ManyToManyField(Teacher, related_name='students')
     group = models.CharField(max_length=10, verbose_name='Класс')
+    teacher = models.ManyToManyField(Teacher, related_name='students', through='Student_Teacher')
 
     class Meta:
         verbose_name = 'Ученик'
@@ -27,3 +26,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+class Student_Teacher(models.Model):
+    teacher=models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    student=models.ForeignKey(Student, on_delete=models.CASCADE)
